@@ -1,0 +1,21 @@
+db-url: jdbc:h2:mem:testdb
+db-username: sa
+db-password:
+db-driver-class: org.h2.Driver
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        jdbc.time_zone: UTC
+        boot:
+          allow_jdbc_metadata_access: true
+  flyway:
+    password:
+    user: sa
+    url: jdbc:h2:mem:testdb
+    baselineOnMigrate: true
