@@ -7,6 +7,9 @@ spring:
   h2:
     console:
       enabled: true
+  sql:
+    init:
+      mode: always
 springdoc:
   swagger-ui:
     path: /v1/api-docs

@@ -1,4 +1,4 @@
-db-url: jdbc:h2:mem:testdb
+db-url: jdbc:h2:mem:api-store
 db-username: sa
 db-password:
 db-driver-class: org.h2.Driver
@@ -12,10 +12,13 @@ spring:
         show_sql: true
         format_sql: true
         jdbc.time_zone: UTC
-        boot:
-          allow_jdbc_metadata_access: true
+        temp:
+          allow_jdbc_metadata_access: false
+  sql:
+    init:
+      platform: h2
   flyway:
     password:
     user: sa
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:api-store
     baselineOnMigrate: true
