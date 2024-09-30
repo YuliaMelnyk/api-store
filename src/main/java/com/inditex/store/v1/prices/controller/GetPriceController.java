@@ -5,7 +5,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 import com.inditex.store.commons.constants.Constants;
 import com.inditex.store.commons.utils.ApiVersion;
-import com.inditex.store.v1.prices.controller.model.GetPriceResponse;
+import com.inditex.store.v1.prices.controller.model.GetPricesResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,7 +31,7 @@ public interface GetPriceController {
       parameters = {
           @Parameter(
               in = QUERY,
-              name = "startDate",
+              name = "applicationDate",
               description = "Date on which the indicated rate price applies",
               example = "2020-06-14-00.00.00",
               schema = @Schema(implementation = ZonedDateTime.class)),
@@ -52,9 +52,9 @@ public interface GetPriceController {
       @ApiResponse(
           description = "Successful operation",
           responseCode = "200",
-          content = @Content(schema = @Schema(implementation = GetPriceResponse.class))))
-  ResponseEntity<GetPriceResponse> getCurrentPrice(
-      @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+          content = @Content(schema = @Schema(implementation = GetPricesResponse.class))))
+  ResponseEntity<GetPricesResponse> getCurrentPrice(
+      @RequestParam("applicationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
       @RequestParam("productId") Long productId,
       @RequestParam("brandId") Long brandId);
 }

@@ -12,18 +12,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DataSourceConfig {
 
-  private final InditexConnectProperties inditexConnectProperties;
+  private final ConnectProperties connectProperties;
 
   @Bean
   public DataSource getDataSource() {
 
-    log.info("[CONNECTION] url: <{}> ", inditexConnectProperties.getDbUrl());
+    log.info("[CONNECTION] url: <{}> ", connectProperties.getDbUrl());
 
     DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-    dataSourceBuilder.driverClassName(inditexConnectProperties.getDbDriverClass());
-    dataSourceBuilder.url(inditexConnectProperties.getDbUrl());
-    dataSourceBuilder.username(inditexConnectProperties.getDbUserName());
-    dataSourceBuilder.password(inditexConnectProperties.getDbPassword());
+    dataSourceBuilder.driverClassName(connectProperties.getDbDriverClass());
+    dataSourceBuilder.url(connectProperties.getDbUrl());
+    dataSourceBuilder.username(connectProperties.getDbUserName());
+    dataSourceBuilder.password(connectProperties.getDbPassword());
 
     return dataSourceBuilder.build();
   }

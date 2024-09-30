@@ -1,9 +1,10 @@
 package com.inditex.store.usecase;
 
-import com.inditex.store.v1.prices.controller.model.GetPriceResponse;
+import com.inditex.store.usecase.model.PriceVO;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface GetPriceUseCase {
-  GetPriceResponse getPrice(LocalDateTime startDate,
-                            Long productId, Long brandId);
+  List<PriceVO> getPrice(LocalDateTime applicationDate,
+                         Long productId, Long brandId);
 }
