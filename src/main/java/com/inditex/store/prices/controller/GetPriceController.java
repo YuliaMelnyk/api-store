@@ -1,11 +1,11 @@
-package com.inditex.store.v1.prices.controller;
+package com.inditex.store.prices.controller;
 
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 import com.inditex.store.commons.constants.Constants;
 import com.inditex.store.commons.utils.ApiVersion;
-import com.inditex.store.v1.prices.controller.model.GetPricesResponse;
+import com.inditex.store.prices.controller.model.GetPricesResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @ApiVersion(from = Constants.VERSION_FROM)
 @Tag(name = "Get prices")
-@RequestMapping(value = "/v1", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/inditex/api", produces = APPLICATION_JSON_VALUE)
 public interface GetPriceController {
 
   @Operation(
@@ -34,7 +33,7 @@ public interface GetPriceController {
               name = "applicationDate",
               description = "Date on which the indicated rate price applies",
               example = "2020-06-14-00.00.00",
-              schema = @Schema(implementation = ZonedDateTime.class)),
+              schema = @Schema(implementation = LocalDateTime.class)),
           @Parameter(
               in = QUERY,
               name = "productId",
@@ -54,7 +53,7 @@ public interface GetPriceController {
           responseCode = "200",
           content = @Content(schema = @Schema(implementation = GetPricesResponse.class))))
   ResponseEntity<GetPricesResponse> getCurrentPrice(
-      @RequestParam("applicationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
+      @RequestParam("applicationDate")  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
       @RequestParam("productId") Long productId,
       @RequestParam("brandId") Long brandId);
 }

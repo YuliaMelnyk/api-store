@@ -1,8 +1,8 @@
-package com.inditex.store.v1.prices.controller;
+package com.inditex.store.prices.controller;
 
-import com.inditex.store.usecase.GetPriceUseCase;
-import com.inditex.store.v1.prices.controller.mapper.GetPriceResponseMapper;
-import com.inditex.store.v1.prices.controller.model.GetPricesResponse;
+import com.inditex.store.prices.controller.mapper.GetPricesResponseMapper;
+import com.inditex.store.prices.controller.model.GetPricesResponse;
+import com.inditex.store.prices.usecase.GetPriceUseCase;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +15,13 @@ public class GetPriceControllerImpl implements GetPriceController {
 
   private final GetPriceUseCase getPriceUseCase;
 
-  private final GetPriceResponseMapper getPriceResponseMapper;
+  private final GetPricesResponseMapper getPricesResponseMapper;
 
   @Override
   @GetMapping("/prices")
   public ResponseEntity<GetPricesResponse> getCurrentPrice(LocalDateTime applicationDate,
                                                            Long productId, Long brandId) {
-    return ResponseEntity.ok(getPriceResponseMapper.priceVOToGetPriceResponse(
+    return ResponseEntity.ok(getPricesResponseMapper.mapToGetPricesResponse(
         getPriceUseCase.getPrice(applicationDate, productId, brandId)));
   }
 }

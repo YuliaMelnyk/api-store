@@ -1,4 +1,4 @@
-package com.inditex.store.usecase.model;
+package com.inditex.store.prices.usecase.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

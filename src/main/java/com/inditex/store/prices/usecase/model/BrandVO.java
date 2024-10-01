@@ -1,4 +1,4 @@
-package com.inditex.store.usecase.model;
+package com.inditex.store.prices.usecase.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

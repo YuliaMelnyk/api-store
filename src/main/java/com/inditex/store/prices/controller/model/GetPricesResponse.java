@@ -1,9 +1,8 @@
-package com.inditex.store.v1.prices.controller.model;
+package com.inditex.store.prices.controller.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,15 +16,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetPricesResponse {
 
-  @Schema(description = "List of product prices")
-  private List<Price> prices;
-
-  @Getter
-  @Setter
-  @Builder
-  @NoArgsConstructor
-  @AllArgsConstructor
-  public static class Price {
     @Schema(description = "Product code identifier", example = "35455")
     private Long productId;
     @Schema(description = "Brand identifier", example = "1")
@@ -40,5 +30,4 @@ public class GetPricesResponse {
     private Long priceList;
     @Schema(description = "Final sale price", example = "38.95")
     private BigDecimal price;
-  }
 }

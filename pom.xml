@@ -49,6 +49,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<!--		Swagger 2, to automatically generate API documentation-->
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -68,10 +76,12 @@
 			<version>2.2.224</version>
 		</dependency>
 
+
+
 		<dependency>
-			<groupId>io.swagger.core.v3</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>2.2.23</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.17.0</version>
 		</dependency>
 
 		<dependency>
@@ -85,6 +95,7 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.5.0-M2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
