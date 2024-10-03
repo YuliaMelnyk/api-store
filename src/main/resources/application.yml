@@ -1,12 +1,26 @@
+project:
+  artifactId: '@project.artifactId@'
+  appName: '@appName@'
+  name: '@project.name@'
+  version: '@project.version@'
+  description: '@project.description@'
+  groupId: '@project.groupId@'
+
 server:
   port: 9030
 #Connection profiles
 spring:
+  application:
+    name: ${project.artifactId}
   profiles:
     active: local
   h2:
     console:
       enabled: true
+  sql:
+    init:
+      mode: always
+
 springdoc:
   swagger-ui:
-    path: /v1/api-docs
+    path: /v3/api-docs

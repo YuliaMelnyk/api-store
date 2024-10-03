@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 @Getter
 @Setter
-public class InditexConnectProperties {
+public class ConnectProperties {
 
   private String dbType;
 

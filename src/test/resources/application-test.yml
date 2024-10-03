@@ -1,6 +1,14 @@
+server:
+  port: 8030
+#Connection profiles
+
+springdoc:
+  swagger-ui:
+    path: /v3/api-docs
+
 db-url: jdbc:h2:mem:api-store
-db-username: sa
-db-password:
+db-username: test
+db-password: test
 db-driver-class: org.h2.Driver
 
 spring:
@@ -13,9 +21,19 @@ spring:
         format_sql: true
         temp:
           allow_jdbc_metadata_access: false
+  sql:
+    init:
+      platform: h2
   flyway:
     password:
     user: sa
     url: jdbc:h2:mem:api-store
     baselineOnMigrate: true
 
+  application:
+    name: ${project.artifactId}
+  profiles:
+    active: test
+  h2:
+    console:
+      enabled: true

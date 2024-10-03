@@ -1,4 +1,4 @@
-package com.inditex.store.repository.model;
+package com.inditex.store.price.adapter.repository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

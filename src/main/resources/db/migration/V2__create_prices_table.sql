@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS prices (
   id BIGINT NOT NULL AUTO_INCREMENT,
   brand_id INTEGER NOT NULL,
-	start_date TIMESTAMP NOT NULL DEFAULT (now() at time zone 'utc'),
-	end_date TIMESTAMP NOT NULL DEFAULT (now() at time zone 'utc'),
+	start_date TIMESTAMP NOT NULL,
+	end_date TIMESTAMP NOT NULL,
 	price_list BIGINT NOT NULL,
 	product_id BIGINT NOT NULL,
 	priority INTEGER NOT NULL,

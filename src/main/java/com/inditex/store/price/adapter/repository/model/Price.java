@@ -1,4 +1,4 @@
-package com.inditex.store.repository.model;
+package com.inditex.store.price.adapter.repository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,12 +8,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "prices")
 @Getter
@@ -29,8 +30,10 @@ public class Price implements Serializable {
   @ManyToOne
   @JoinColumn(name = "brand_id")
   private Brand brandId;
-  private ZonedDateTime startDate;
-  private ZonedDateTime endDate;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private LocalDateTime startDate;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private LocalDateTime endDate;
   private Long priceList;
   private Long productId;
   private Integer priority;
