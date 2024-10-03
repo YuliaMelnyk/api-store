@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class InditexInternalErrorResponse {
+public class InditexBadRequestException {
 
   private final Map<String, String[]> parameters;
 
