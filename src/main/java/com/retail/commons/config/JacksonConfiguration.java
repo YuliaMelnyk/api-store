@@ -7,9 +7,17 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Jackson configuration.
+ */
 @Configuration
 public class JacksonConfiguration {
 
+  /**
+   * Jackson 2 object mapper builder customizer jackson 2 object mapper builder customizer.
+   *
+   * @return the jackson 2 object mapper builder customizer
+   */
   @Bean
   public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
 

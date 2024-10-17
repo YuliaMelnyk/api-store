@@ -13,10 +13,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 import org.springframework.web.context.request.WebRequest;
 
+/**
+ * Store controller exception handler.
+ */
 @Slf4j
 @ControllerAdvice
 public class StoreControllerExceptionHandler {
 
+  /**
+   * Handle price not found exception response entity.
+   *
+   * @param exception the exception
+   * @param request   the request
+   * @return the response entity
+   */
   @ExceptionHandler(PriceNotFoundException.class)
   @ResponseStatus(NO_CONTENT)
   public ResponseEntity<?> handlePriceNotFoundException(PriceNotFoundException exception,
@@ -24,6 +34,13 @@ public class StoreControllerExceptionHandler {
     return new ResponseEntity(new GetPriceResponse(), NO_CONTENT);
   }
 
+  /**
+   * Handle internal exception response entity.
+   *
+   * @param exception the exception
+   * @param request   the request
+   * @return the response entity
+   */
   @ExceptionHandler(InternalServerError.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ResponseEntity<?> handleInternalException(Exception exception, WebRequest request) {
@@ -32,6 +49,13 @@ public class StoreControllerExceptionHandler {
                               HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
+  /**
+   * Handle exception response entity.
+   *
+   * @param exception the exception
+   * @param request   the request
+   * @return the response entity
+   */
   @ExceptionHandler(ConstraintViolationException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseEntity<?> handleException(Exception exception, WebRequest request) {

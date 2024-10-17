@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Get price controller.
+ */
 @RestController
 @RequiredArgsConstructor
 public class GetPriceControllerImpl implements GetPriceController {

@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+/**
+ * Get price use case.
+ */
 @Service
 @RequiredArgsConstructor
 public class GetPriceUseCaseImpl implements GetPriceUseCase {

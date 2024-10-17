@@ -16,6 +16,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * Price.
+ */
 @Entity(name = "prices")
 @Getter
 @Setter

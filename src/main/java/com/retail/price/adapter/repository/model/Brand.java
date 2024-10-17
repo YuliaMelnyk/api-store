@@ -11,6 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Brand.
+ */
 @Entity(name = "brand")
 @Getter
 @Setter

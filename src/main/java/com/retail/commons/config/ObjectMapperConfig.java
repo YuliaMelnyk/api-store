@@ -12,9 +12,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+/**
+ * Object mapper config.
+ */
 @Configuration
 public class ObjectMapperConfig {
 
+  /**
+   * Object mapper object mapper.
+   *
+   * @return the object mapper
+   */
   @Bean
   @Primary
   public ObjectMapper objectMapper() {

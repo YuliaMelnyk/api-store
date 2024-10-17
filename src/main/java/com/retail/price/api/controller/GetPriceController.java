@@ -21,11 +21,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * The interface Get price controller.
+ */
 @ApiVersion(from = Constants.VERSION_FROM)
 @Tag(name = "Get price")
 @RequestMapping(value = "/store/api", produces = APPLICATION_JSON_VALUE)
 public interface GetPriceController {
 
+  /**
+   * Gets current price.
+   *
+   * @param applicationDate the application date
+   * @param productId       the product id
+   * @param brandId         the brand id
+   * @return the current price
+   */
   @Operation(
       summary = "Get price for introduced data not exists",
       parameters = {

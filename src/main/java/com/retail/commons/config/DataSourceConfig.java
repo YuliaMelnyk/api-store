@@ -7,6 +7,9 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Data source config.
+ */
 @RequiredArgsConstructor
 @Slf4j
 @Configuration
@@ -14,6 +17,11 @@ public class DataSourceConfig {
 
   private final ConnectProperties connectProperties;
 
+  /**
+   * Gets data source.
+   *
+   * @return the data source
+   */
   @Bean
   public DataSource getDataSource() {
 

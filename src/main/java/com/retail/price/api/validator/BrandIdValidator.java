@@ -4,6 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.stereotype.Component;
 
+/**
+ * Brand id validator.
+ */
 @Component
 public class BrandIdValidator implements ConstraintValidator<BrandIdValid, Long> {
 
