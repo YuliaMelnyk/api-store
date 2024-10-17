@@ -150,31 +150,13 @@
     </dependency>
 
     <dependency>
-      <artifactId>spring-security-core</artifactId>
-      <groupId>org.springframework.security</groupId>
-      <version>6.0.3</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>spring-security-config</artifactId>
-      <groupId>org.springframework.security</groupId>
-      <version>6.0.3</version>
-    </dependency>
-
-    <dependency>
-      <artifactId>spring-security-web</artifactId>
-      <groupId>org.springframework.security</groupId>
-      <version>6.0.3</version>
-    </dependency>
-
-    <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
       <groupId>org.springframework.boot</groupId>
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <description>Demo project for Inditex</description>
-  <groupId>com.inditex</groupId>
+  <description>Api for retail store</description>
+  <groupId>com.retail</groupId>
   <modelVersion>4.0.0</modelVersion>
   <name>api-store</name>
   <parent>

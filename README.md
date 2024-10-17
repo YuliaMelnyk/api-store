@@ -23,7 +23,7 @@ Need to add in environment variables:
 - **Web App:** To start the embedded server from the command line use `mvn spring-boot:run`, or run
   StoreApplication class.
 - **API Endpoint:** Open a browser and go
-  to `/inditex/api/prices?applicationDate={applicationDate}&productId={productId}&brandId={brandId}`
+  to `http://localhost:9030/store/prices?applicationDate={applicationDate}&productId={productId}&brandId={brandId}`
   , from there discover all the
   endpoints.
 - **Swagger Documentation:** available at  `localhost:9030/swagger-ui.html`
@@ -35,7 +35,7 @@ Need to add in environment variables:
 ## Curl of endpoint
 
 curl
---location 'http://localhost:9030/inditex/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1'
+--location 'http://localhost:9030/store/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1'
 
 Architecture:
 
@@ -60,6 +60,3 @@ I have made the project small and simple based on the presented task.
 Of course, in a real project there would be a different structure and there would be more logic
 and different implementations.
 
-P.S. I have commented PriceRepositoryTest because it up the context and try to
-insert the second time the same data in database. I have tried to put @Profile("test")
-but didnt work. Maybe you can tell me the solution. Thanks.
