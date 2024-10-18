@@ -1,5 +1,6 @@
 package com.retail.controller;
 
+import static com.retail.utils.TestUtils.getHeaders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.retail.price.adapter.repository.BrandRepository;
@@ -17,7 +18,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @SpringBootTest
 public class GetPriceControllerIT {
@@ -36,7 +39,7 @@ public class GetPriceControllerIT {
 
   private static Stream<Arguments> paramsForCurrentPrice() {
     return Stream.of(
-        Arguments.of(LocalDateTime.parse("2020-06-14T16:00:00"), 35455L, 1L,
+        Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T16:00:00"), 35455L, 1L,
                      TestUtils.createCustomResponse
                          (1L, LocalDateTime.parse("2020-06-14T15:00:00"),
                           LocalDateTime.parse("2020-06-14T18:30:00"), 2L,
@@ -46,7 +49,8 @@ public class GetPriceControllerIT {
                                                  35455L, 25.45, 1
                      ),
 
-                     Arguments.of(LocalDateTime.parse("2020-06-14T10:00:00"), 35455L, 1L,
+                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T10:00:00"), 35455L,
+                                  1L,
                                   TestUtils.createCustomResponse(
                                       1L, LocalDateTime.parse("2020-06-14T00:00:00"),
                                       LocalDateTime.parse("2020-12-31T23:59:59"), 1L,
@@ -57,7 +61,8 @@ public class GetPriceControllerIT {
                                                                   "2020-12-31T23:59:59"), 1L,
                                                               35455L, 35.50, 0)),
 
-                     Arguments.of(LocalDateTime.parse("2020-06-14T21:00:00"), 35455L, 1L,
+                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T21:00:00"), 35455L,
+                                  1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-14T00:00:00"),
                                        LocalDateTime.parse("2020-12-31T23:59:59"), 1L,
@@ -68,7 +73,8 @@ public class GetPriceControllerIT {
                                                                   "2020-12-31T23:59:59"), 1L,
                                                               35455L, 35.50, 1)),
 
-                     Arguments.of(LocalDateTime.parse("2020-06-15T10:00:00"), 35455L, 1L,
+                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-15T10:00:00"), 35455L,
+                                  1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T00:00:00"),
                                        LocalDateTime.parse("2020-06-15T11:00:00"), 3L,
@@ -79,7 +85,8 @@ public class GetPriceControllerIT {
                                                                   "2020-06-15T11:00:00"), 3L,
                                                               35455L, 30.50, 1)),
 
-                     Arguments.of(LocalDateTime.parse("2020-06-16T21:00:00"), 35455L, 1L,
+                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-16T21:00:00"), 35455L,
+                                  1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T16:00:00"),
                                        LocalDateTime.parse("2020-12-31T23:59:59"), 4L,
@@ -95,7 +102,8 @@ public class GetPriceControllerIT {
 
   @ParameterizedTest
   @MethodSource("paramsForCurrentPrice")
-  void getCurrentPriceOkTest(LocalDateTime applicationDateTime, Long productId, Long brandId,
+  void getCurrentPriceOkTest(@RequestHeader HttpHeaders headers, LocalDateTime applicationDateTime,
+                             Long productId, Long brandId,
                              GetPriceResponse expectedResponse, Price price) {
 
     Brand brand = Brand.builder().name("ZARA").id(1L).build();
@@ -105,8 +113,9 @@ public class GetPriceControllerIT {
     brandRepository.save(brand);
     priceRepository.save(price);
 
-    ResponseEntity<GetPriceResponse> response = priceController.getCurrentPrice(
-        applicationDateTime, productId, brandId);
+    ResponseEntity<GetPriceResponse> response = priceController.getCurrentPrice(headers,
+                                                                                applicationDateTime,
+                                                                                productId, brandId);
 
     assertEquals(response.getBody().getBrandId(), expectedResponse.getBrandId());
     assertEquals(response.getBody().getPriceList(), expectedResponse.getPriceList());

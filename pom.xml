@@ -150,6 +150,22 @@
     </dependency>
 
     <dependency>
+      <artifactId>spring-security-core</artifactId>
+      <groupId>org.springframework.security</groupId>
+      <version>6.0.3</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-security-config</artifactId>
+      <groupId>org.springframework.security</groupId>
+      <version>6.0.3</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-security-web</artifactId>
+      <groupId>org.springframework.security</groupId>
+      <version>6.0.3</version>
+    </dependency>
+
+    <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
       <groupId>org.springframework.boot</groupId>
       <scope>test</scope>
