@@ -13,7 +13,7 @@ Need to add in environment variables:
 
 -Dspring.profiles.active=local
 
-![img.png](img.png)
+![img_3.png](img_3.png)
 
 # Start the application:
 
