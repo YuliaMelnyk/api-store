@@ -22,10 +22,6 @@ Need to add in environment variables:
   command `mvn test`
 - **Web App:** To start the embedded server from the command line use `mvn spring-boot:run`, or run
   StoreApplication class.
-- **API Endpoint:** Open a browser and go
-  to `http://localhost:9030/store/prices?applicationDate={applicationDate}&productId={productId}&brandId={brandId}`
-  , from there discover all the
-  endpoints.
 - **Swagger Documentation:** available at  `localhost:9030/swagger-ui.html`
 - **Code coverage report:** available
   at  `http://localhost:63342/api-store/target/site/jacoco/index.html`
@@ -34,8 +30,19 @@ Need to add in environment variables:
 
 ## Curl of endpoint
 
+Basic Auth:
+
+- user: user1
+- password: password
+
+![img.png](img.png)
+
 curl
---location 'http://localhost:9030/store/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1'
+--location 'http://localhost:9030/store/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1' \
+--header 'Authorization: Basic dXNlcjE6cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=2E8C4BD3E65792112F346B5E7B2147BF'
+
+![img_2.png](img_2.png)
 
 Architecture:
 
