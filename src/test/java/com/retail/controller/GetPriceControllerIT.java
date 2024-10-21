@@ -39,7 +39,7 @@ public class GetPriceControllerIT {
 
   private static Stream<Arguments> paramsForCurrentPrice() {
     return Stream.of(
-        Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T16:00:00"), 35455L, 1L,
+        Arguments.of(LocalDateTime.parse("2020-06-14T16:00:00"), 35455L, 1L,
                      TestUtils.createCustomResponse
                          (1L, LocalDateTime.parse("2020-06-14T15:00:00"),
                           LocalDateTime.parse("2020-06-14T18:30:00"), 2L,
@@ -49,7 +49,7 @@ public class GetPriceControllerIT {
                                                  35455L, 25.45, 1
                      ),
 
-                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T10:00:00"), 35455L,
+                     Arguments.of(LocalDateTime.parse("2020-06-14T10:00:00"), 35455L,
                                   1L,
                                   TestUtils.createCustomResponse(
                                       1L, LocalDateTime.parse("2020-06-14T00:00:00"),
@@ -61,7 +61,7 @@ public class GetPriceControllerIT {
                                                                   "2020-12-31T23:59:59"), 1L,
                                                               35455L, 35.50, 0)),
 
-                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-14T21:00:00"), 35455L,
+                     Arguments.of(LocalDateTime.parse("2020-06-14T21:00:00"), 35455L,
                                   1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-14T00:00:00"),
@@ -73,7 +73,8 @@ public class GetPriceControllerIT {
                                                                   "2020-12-31T23:59:59"), 1L,
                                                               35455L, 35.50, 1)),
 
-                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-15T10:00:00"), 35455L,
+                     Arguments.of(LocalDateTime.parse("2020-06-15T10:00:00"), 35455L,
+
                                   1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T00:00:00"),
@@ -85,7 +86,8 @@ public class GetPriceControllerIT {
                                                                   "2020-06-15T11:00:00"), 3L,
                                                               35455L, 30.50, 1)),
 
-                     Arguments.of(getHeaders(), LocalDateTime.parse("2020-06-16T21:00:00"), 35455L,
+                     Arguments.of(LocalDateTime.parse("2020-06-16T21:00:00"), 35455L,
+
                                   1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T16:00:00"),
@@ -102,7 +104,7 @@ public class GetPriceControllerIT {
 
   @ParameterizedTest
   @MethodSource("paramsForCurrentPrice")
-  void getCurrentPriceOkTest(@RequestHeader HttpHeaders headers, LocalDateTime applicationDateTime,
+  void getCurrentPriceOkTest(LocalDateTime applicationDateTime,
                              Long productId, Long brandId,
                              GetPriceResponse expectedResponse, Price price) {
 
@@ -113,8 +115,7 @@ public class GetPriceControllerIT {
     brandRepository.save(brand);
     priceRepository.save(price);
 
-    ResponseEntity<GetPriceResponse> response = priceController.getCurrentPrice(headers,
-                                                                                applicationDateTime,
+    ResponseEntity<GetPriceResponse> response = priceController.getCurrentPrice(applicationDateTime,
                                                                                 productId, brandId);
 
     assertEquals(response.getBody().getBrandId(), expectedResponse.getBrandId());

@@ -70,6 +70,9 @@ public interface GetPriceController {
           @ApiResponse(
               description = "Price for introduced data not exists",
               responseCode = "204", content = @Content),
+          @ApiResponse(
+              description = "Bad request",
+              responseCode = "400", content = @Content),
           @ApiResponse(description = "General system error", responseCode = "500", content =
           @Content)
       })

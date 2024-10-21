@@ -44,6 +44,8 @@ curl
 
 ![img_2.png](img_2.png)
 
+![img_2.png](img_2.png)
+
 Architecture:
 
 - Api: contains the endpoint
