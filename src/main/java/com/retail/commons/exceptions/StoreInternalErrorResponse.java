@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Inditex internal error response.
+ * Store internal error response.
  */
 @RequiredArgsConstructor
 @Getter
-public class InditexInternalErrorResponse {
+public class StoreInternalErrorResponse {
 
   private final Map<String, String[]> parameters;
 

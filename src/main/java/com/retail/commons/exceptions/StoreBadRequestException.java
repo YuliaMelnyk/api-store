@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Inditex bad request exception.
+ * Store bad request exception.
  */
 @RequiredArgsConstructor
 @Getter
-public class InditexBadRequestException {
+public class StoreBadRequestException {
 
   private final Map<String, String[]> parameters;
 
