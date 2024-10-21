@@ -17,7 +17,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -74,8 +76,8 @@ public interface GetPriceController {
           @ApiResponse(description = "General system error", responseCode = "500", content =
           @Content)
       })
-  ResponseEntity<GetPriceResponse> getCurrentPrice(
-      @RequestParam("applicationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
-      @RequestParam("productId") @ProductIdValid Long productId,
-      @RequestParam("brandId") @BrandIdValid Long brandId);
+  ResponseEntity<GetPriceResponse> getCurrentPrice(@RequestHeader HttpHeaders headers,
+                                                   @RequestParam("applicationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate,
+                                                   @RequestParam("productId") @ProductIdValid Long productId,
+                                                   @RequestParam("brandId") @BrandIdValid Long brandId);
 }

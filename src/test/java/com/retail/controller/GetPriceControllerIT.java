@@ -1,5 +1,6 @@
 package com.retail.controller;
 
+import static com.retail.utils.TestUtils.getHeaders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.retail.price.adapter.repository.BrandRepository;
@@ -17,7 +18,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @SpringBootTest
 public class GetPriceControllerIT {
@@ -71,6 +74,7 @@ public class GetPriceControllerIT {
                                                               35455L, 35.50, 1)),
 
                      Arguments.of(LocalDateTime.parse("2020-06-15T10:00:00"), 35455L,
+
                                   1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T00:00:00"),
@@ -83,6 +87,7 @@ public class GetPriceControllerIT {
                                                               35455L, 30.50, 1)),
 
                      Arguments.of(LocalDateTime.parse("2020-06-16T21:00:00"), 35455L,
+
                                   1L,
                                   TestUtils.createCustomResponse
                                       (1L, LocalDateTime.parse("2020-06-15T16:00:00"),

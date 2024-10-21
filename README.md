@@ -30,8 +30,21 @@ Need to add in environment variables:
 
 ## Curl of endpoint
 
+Basic Auth:
+
+- user: user1
+- password: password
+
+![img.png](img.png)
+
 curl
---location 'http://localhost:9030/store/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1'
+--location 'http://localhost:9030/store/api/prices?applicationDate=2020-06-14T15%3A00%3A00&productId=35455&brandId=1' \
+--header 'Authorization: Basic dXNlcjE6cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=2E8C4BD3E65792112F346B5E7B2147BF'
+
+![img_2.png](img_2.png)
+
+![img_2.png](img_2.png)
 
 ![img_2.png](img_2.png)
 

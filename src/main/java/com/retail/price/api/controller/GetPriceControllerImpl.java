@@ -5,8 +5,11 @@ import com.retail.price.api.response.GetPriceResponse;
 import com.retail.price.domain.usecase.GetPriceUseCase;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,9 +25,18 @@ public class GetPriceControllerImpl implements GetPriceController {
 
   @Override
   @GetMapping("/prices")
-  public ResponseEntity<GetPriceResponse> getCurrentPrice(LocalDateTime applicationDate,
+  public ResponseEntity<GetPriceResponse> getCurrentPrice(@RequestHeader HttpHeaders headers,
+                                                          LocalDateTime applicationDate,
                                                           Long productId, Long brandId) {
-    return ResponseEntity.ok(getPriceResponseMapper.mapToGetPriceResponse(
-        getPriceUseCase.getPrice(applicationDate, productId, brandId)));
+
+    if (headers.containsKey(HttpHeaders.AUTHORIZATION)) {
+      String authorizationHeader = headers.getFirst(HttpHeaders.AUTHORIZATION);
+      if (authorizationHeader.startsWith("Basic ")) {
+        return ResponseEntity.ok(getPriceResponseMapper.mapToGetPriceResponse(
+            getPriceUseCase.getPrice(applicationDate, productId, brandId)));
+      }
+    }
+    return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED);
   }
+
 }
