@@ -5,8 +5,6 @@ import com.retail.price.adapter.repository.model.Price;
 import com.retail.price.api.response.GetPriceResponse;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Base64;
-import org.springframework.http.HttpHeaders;
 
 public class TestUtils {
 
@@ -51,13 +49,5 @@ public class TestUtils {
         .brandId(Brand.builder().name("ZARA").id(brandId).build())
         .endDate(endDate).priority(priority)
         .priceList(priceList).productId(productId).startDate(startDate).build();
-  }
-
-  public static HttpHeaders getHeaders() {
-    HttpHeaders authHeaders = new HttpHeaders();
-    String token = new String(Base64.getEncoder().encode(
-        ("user1" + ":" + "password").getBytes()));
-    authHeaders.set("Authorization", "Basic " + token);
-    return authHeaders;
   }
 }

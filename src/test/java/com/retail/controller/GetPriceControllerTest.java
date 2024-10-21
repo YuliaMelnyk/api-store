@@ -1,6 +1,5 @@
 package com.retail.controller;
 
-import static com.retail.utils.TestUtils.getHeaders;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,7 +44,6 @@ public class GetPriceControllerTest {
     mockMvc
         .perform(
             MockMvcRequestBuilders.get(URL)
-                .headers(getHeaders())
                 .param("applicationDate", "2020-06-14T16:00:00")
                 .param("productId", "35455")
                 .param("brandId", "1")
@@ -64,7 +62,6 @@ public class GetPriceControllerTest {
     mockMvc
         .perform(
             MockMvcRequestBuilders.get(URL)
-                .headers(getHeaders())
                 .param("applicationDate", "2020-06-14T16:00:00")
                 .param("productId", "3945")
                 .param("brandId", "1")
