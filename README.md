@@ -41,6 +41,8 @@ Architecture:
 - Adapter: contains repository(out) and controller (in)
 - Commons: contains configuration, utils, constants and exceptions
 
+
+
 - Used @ControllerAdvice to manage exceptions to avoided using try-catch blocks.
 - Used flyway to automatically run database.
 - Used Facade, Builder patterns
