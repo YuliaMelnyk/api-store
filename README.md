@@ -37,9 +37,8 @@ curl
 
 Architecture:
 
-- Api: contains the endpoint
-- Domain: contains model and use case
-- Adapter: contains repository
+- Application: contains domain model, service and port
+- Adapter: contains repository(out) and controller (in)
 - Commons: contains configuration, utils, constants and exceptions
 
 Api receives requests from external users and it calls use case. Use case
